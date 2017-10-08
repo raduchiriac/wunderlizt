@@ -1,0 +1,29 @@
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.product:hover {
+  cursor: pointer;
+}
+
+.product p {
+  margin: 0;
+}
+
+.product .image {
+  position: absolute;
+  background-position: 50% 50%;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}

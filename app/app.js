@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import style from './style.css';
-import logo from './assets/react-logo.png'
+import logo from './assets/react-logo.png';
 
-export default class Hello extends Component {
+import db from './db.json';
+
+import ProductList from './containers/ProductList.js';
+
+export default class App extends Component {
   render() {
-    return (
-      <div>
-        Hello from react
-        <img src={ logo } alt='React logo' />
-      </div>
-    );
+    return <ProductList products={db.products} />
   }
 }
 
-render(<Hello />, document.getElementById('app'))
+render(<App />, document.getElementById('app'))
