@@ -1,1 +1,3 @@
-console.log('Hello world!');
+const f = () => console.log('Hello with Babel!');
+
+f();
