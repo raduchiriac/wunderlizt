@@ -12,7 +12,7 @@ import ProductsList from './containers/ProductsList.js';
 
 export default class App extends Component {
   render() {
-    return <ProductsList />
+    return <ProductsList />;
   }
 }
 
@@ -23,4 +23,4 @@ render(
   <Provider store={store}>
     <App />
   </Provider>, 
-document.getElementById('app'));
+  document.getElementById('app'));

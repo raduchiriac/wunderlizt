@@ -27,8 +27,8 @@ function mapState(state) {
 
 function mapDispatch(dispatch) {
   return {
-    //addToCart: () => dispatch(f())
-  }
+    //addToCart: () => dispatch(ACTION)
+  };
 }
 
 export default connect(mapState, mapDispatch)(ProductList);
