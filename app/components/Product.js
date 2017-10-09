@@ -1,12 +1,27 @@
 import React from 'react';
 import styles from './Product.css';
 
-const Product = product => (
-  <div className="product" key={ 'product' + product.id }>
-    <div className="image" style={{ backgroundImage: 'url('+product.image+')' }} />
-    <p>{ product.name }</p>
-    <span>{ product.price }</span>
-  </div>
-);
+export default class Product extends React.Component {
 
-export default Product;
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentAmount: 0
+    };
+  }
+
+  _increseAmount() {
+    this.setState({
+      currentAmount: this.state.currentAmount+1
+    });
+  }
+
+  render() {
+    return <div className="product" onClick={ () => this._increseAmount() }>
+      <div className="image" style={{ backgroundImage: 'url('+this.props.product.image+')' }} />
+      {!!this.state.currentAmount && <p className="current-amount">{ this.state.currentAmount }</p>}
+      <p className="title">{ this.props.product.name }</p>
+      <span className="price">{ this.props.product.price + '€' }</span>
+    </div>;
+  }
+}

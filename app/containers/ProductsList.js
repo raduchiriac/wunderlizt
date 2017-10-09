@@ -13,8 +13,8 @@ class ProductList extends React.Component {
 
   render() {
     let products = (this.state.items || []).map(p => 
-      Product(p)
-    )
+      <Product product={p} key={ 'product' + p.id }/>
+    );
     return <div className="products">
       { products }
     </div>;
