@@ -11,6 +11,7 @@ export default class Product extends React.Component {
   }
 
   _increseAmount() {
+    this.props.onAdd(this.props.product.id, this.props.product.price);
     this.setState({
       currentAmount: this.state.currentAmount+1
     });
