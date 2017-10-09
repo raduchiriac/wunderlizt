@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 
+import reducers from './store/reducers';
+import * as productsActions from './store/actions/productsActions';
 import style from './style.css';
-import logo from './assets/react-logo.png';
-
 import db from './db.json';
 
-import ProductList from './containers/ProductList.js';
+import ProductsList from './containers/ProductsList.js';
 
 export default class App extends Component {
   render() {
-    return <ProductList products={db.products} />
+    return <ProductsList />
   }
 }
 
-render(<App />, document.getElementById('app'))
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+store.dispatch({type: productsActions.LOAD_PRODUCTS, payload: db.products});
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>, 
+document.getElementById('app'));
