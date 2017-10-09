@@ -1,20 +1,11 @@
 import * as cartActions from '../actions/cartActions';
 
-const initialState = {
-  items: {}
-};
+const initialState = { };
 
 export default function cartReducer(state = initialState, action) {
   switch (action.type) {
   case cartActions.ADD_TO_CART:
-    state.items[action.payload.id] = state.items[action.payload.id] ? {
-      amount: state.items[action.payload.id].amount + 1,
-      price: action.payload.price
-    } : {
-      amount: 1,
-      price: action.payload.price
-    };
-    return state;
+    return Object.assign({}, state, {[action.payload.id]: (state[action.payload.id] && state[action.payload.id] + 1 || 1)});
   default:
     return state;
   }

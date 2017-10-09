@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
@@ -9,10 +9,14 @@ import style from './style.css';
 import db from './db.json';
 
 import ProductsList from './containers/ProductsList.js';
+import Header from './containers/Header.js';
 
-export default class App extends Component {
+export default class App extends React.Component {
   render() {
-    return <ProductsList />;
+    return <div>
+      <Header />
+      <ProductsList />
+    </div>;
   }
 }
 

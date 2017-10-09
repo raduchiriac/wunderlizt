@@ -1,0 +1,38 @@
+.header {
+  background-color: rgb(94,22,102);
+  display: flex;
+  padding: 1em;
+  color: white;
+}
+
+.header button {
+  color: inherit;
+  border: none;
+  background: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.header .header-title {
+  flex-grow: 1;
+  margin: 0;
+  font-size: inherit;
+  align-self: center;
+  font-weight: 200;
+}
+
+.header button:focus {
+  outline:0;
+}
+
+.header .header-list {
+  background-color: rgb(94,22,102);
+  position: absolute;
+  margin: 0;
+  padding: 1em;
+  z-index: 4;
+  list-style: none;
+  border-radius: 0 0 4px 4px;
+  right: 4px;
+  box-shadow: 0em 0.2em 0.3em rgba(1,1,1,.3);
+}

@@ -1,13 +1,13 @@
 import * as productsActions from '../actions/productsActions';
 
 const initialState = {
-  items: []
+  items: {}
 };
 
 export default function productsReducer(state = initialState, action) {
   switch(action.type) {
   case productsActions.LOAD_PRODUCTS:
-    state.items = [...state.items, ...action.payload];
+    state.items = Object.assign({}, state.items, action.payload);
     return state;
   case productsActions.LOAD_PRODUCT:
     return state;

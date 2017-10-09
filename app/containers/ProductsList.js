@@ -9,12 +9,11 @@ import * as cartActions from '../store/actions/cartActions';
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, props);
   }
 
   render() {
-    let products = (this.state.items || []).map(p => 
-      <Product product={p} key={ 'product' + p.id } onAdd={this.props.addToCart} />
+    let products = Object.keys(this.props.items).map(id => 
+      <Product product={this.props.items[id]} id={id} key={ 'product' + id } onAdd={this.props.addToCart} />
     );
     return <div className="products">
       { products }
@@ -22,14 +21,14 @@ class ProductList extends React.Component {
   }
 }
 
-function mapState(state) {
+const mapStateToProps = (state) => {
   return state.products;
-}
+};
 
-function mapDispatch(dispatch) {
+const mapDispatch = (dispatch) => {
   return {
     addToCart: (id, price) => dispatch(cartActions.addToCartAction(id, price))
   };
-}
+};
 
-export default connect(mapState, mapDispatch)(ProductList);
+export default connect(mapStateToProps, mapDispatch)(ProductList);

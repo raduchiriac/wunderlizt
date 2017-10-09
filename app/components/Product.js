@@ -11,7 +11,7 @@ export default class Product extends React.Component {
   }
 
   _increseAmount() {
-    this.props.onAdd(this.props.product.id, this.props.product.price);
+    this.props.onAdd(this.props.id, this.props.product.price);
     this.setState({
       currentAmount: this.state.currentAmount+1
     });
@@ -19,10 +19,10 @@ export default class Product extends React.Component {
 
   render() {
     return <div className="product" onClick={ () => this._increseAmount() }>
-      <div className="image" style={{ backgroundImage: 'url('+this.props.product.image+')' }} />
+      <div className="image" style={{ backgroundImage: `url(${this.props.product.image})` }} />
       {!!this.state.currentAmount && <p className="current-amount">{ this.state.currentAmount }</p>}
       <p className="title">{ this.props.product.name }</p>
-      <span className="price">{ this.props.product.price + '€' }</span>
+      <span className="price">{ `${this.props.product.price}€` }</span>
     </div>;
   }
 }
