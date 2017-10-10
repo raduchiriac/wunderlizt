@@ -12,8 +12,8 @@ class ProductList extends React.Component {
   }
 
   render() {
-    let products = Object.keys(this.props.items).map(id => 
-      <Product product={this.props.items[id]} id={id} key={ 'product' + id } onAdd={this.props.addToCart} />
+    let products = Object.keys(this.props.products.items).map(id => 
+      <Product product={this.props.products.items[id]} id={id} key={ 'product' + id } currentAmount={ this.props.cart[id] } onAdd={this.props.addToCart} />
     );
     return <div className="products">
       { products }
@@ -21,13 +21,13 @@ class ProductList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return state.products;
+const mapStateToProps = state => {
+  return state;
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = dispatch => {
   return {
-    addToCart: (id, price) => dispatch(cartActions.addToCartAction(id, price))
+    addToCart: id => dispatch(cartActions.addToCartAction(id))
   };
 };
 
