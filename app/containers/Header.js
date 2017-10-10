@@ -16,34 +16,39 @@ class Header extends React.Component {
   componentWillReceiveProps(newProps) {
     this.setState({
       totalPrice: Object.keys(newProps.cart).reduce((acc, curr) => acc + newProps.cart[curr] * newProps.products.items[curr].price, 0)
+    }, () => {
+      this.setState({
+        open: (this.state.open && !this.state.totalPrice) ? false : this.state.open
+      });
     });
   }
 
   _toggleOpen() {
     this.setState({
-      open: !this.state.open
+      open: this.state.totalPrice && !this.state.open || false
     });
   }
 
   render() {
     let items = Object.keys(this.props.cart).map(id => 
-      !!this.props.cart[id] && <li key={id}>
-        <span className="pre"><code>{this.props.cart[id]}</code></span> 
-        <button onClick={() => this.props.removeFromStore(id)}>-</button> <button onClick={() => this.props.addToStore(id)}>+</button>
-        {this.props.products.items[id].name}
+      !!this.props.cart[id] && <li key={id} className="cart-item">
+        <button className="price-controller down" onClick={() => this.props.removeFromStore(id)}>⇧</button> 
+        <span className="amount"><code>{this.props.cart[id]}</code></span> 
+        <button className="price-controller up" onClick={() => this.props.addToStore(id)}>⇧</button>
+        <span className="header--product-name">{this.props.products.items[id].name}</span>
       </li>);
 
     return <div className="header">
       <h1 className="header-title">Grocery Store :Hackleague:</h1>
       <div className="header-cart">
-        <button className="header-total-price" onClick={() => this._toggleOpen()}>
+        <button className="header--total-price" onClick={() => this._toggleOpen()}>
           { `${this.state.totalPrice}€` }
         </button>
         <div className="header-list" hidden={!this.state.open}>
           <ul>
             { items }
           </ul>
-          <button className="header-pay">PAY</button>
+          <button onClick={() => console.log("Lucky! It's free this time ♥")} className="header-pay">PAY</button>
         </div>
       </div>
     </div>;

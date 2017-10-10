@@ -9,4 +9,5 @@ I like to keep my packages' versions to strict releases inside `package.json`. I
 - [x] ESLint
 - [ ] HMR
 - [ ] React Router
+- [ ] Rewrite the reducers exporting getter functions 
 - [ ] Enzyme
