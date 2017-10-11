@@ -1,7 +1,7 @@
 {
-  "name": "grocery-react-hackleague",
+  "name": "wunderlizt",
   "version": "0.0.1",
-  "description": "",
+  "description": "Store for basedonfacts.club",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server"
@@ -10,8 +10,7 @@
     "babel",
     "react",
     "redux",
-    "webpack",
-    "hackleague"
+    "webpack"
   ],
   "author": "Radu Chiriac <contact@raduchiriac.me>",
   "license": "ISC",
@@ -26,13 +25,15 @@
     "extract-text-webpack-plugin": "3.0.1",
     "file-loader": "1.1.5",
     "html-webpack-plugin": "2.30.1",
+    "webpack-dev-server": "2.9.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "6.26.0",
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-redux": "5.0.6",
     "redux": "3.7.2",
-    "webpack": "3.6.0",
-    "webpack-dev-server": "2.9.1"
-  },
-  "dependencies": {
+    "redux-saga": "0.15.6",
+    "webpack": "3.6.0"
   }
 }
